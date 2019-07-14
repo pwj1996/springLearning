@@ -11,8 +11,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * @author pwj
+ *
+ * my test, test CommandLineRunner.
+ * Use template,
+ */
 @Component
-public class MyStartupRunner implements CommandLineRunner {
+public class RESTfulTestRunner implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 

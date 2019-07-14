@@ -1,11 +1,27 @@
-package com.pwj.config;
+package com.pwj.component;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
-@ConfigurationProperties("storage")
+/**
+ * @author pwj
+ *
+ */
+@PropertySource("classpath:storage.properties")
+@ConfigurationProperties(prefix = "storage")
 @Component
 public class StorageProperties {
+
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * Folder location for storing files

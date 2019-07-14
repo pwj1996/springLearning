@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import com.pwj.exception.StorageException;
 import com.pwj.exception.StorageFileNotFoundException;
-import com.pwj.config.StorageProperties;
+import com.pwj.component.StorageProperties;
 import com.pwj.service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -21,6 +21,11 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * @author pwj
+ *
+ *
+ */
 @Service
 public class FileSystemStorageService implements StorageService {
 
@@ -45,8 +50,11 @@ public class FileSystemStorageService implements StorageService {
                                 + filename);
             }
             try (InputStream inputStream = file.getInputStream()) {
+
                 Files.copy(inputStream, this.rootLocation.resolve(filename),
                     StandardCopyOption.REPLACE_EXISTING);
+                //aop
+                System.out.println(this.rootLocation.resolve(filename));
             }
         }
         catch (IOException e) {
@@ -102,7 +110,7 @@ public class FileSystemStorageService implements StorageService {
             Files.createDirectories(rootLocation);
         }
         catch (IOException e) {
-            throw new StorageException("Could not initialize storage", e);
+            throw new StorageException("Could not initialize storage.properties", e);
         }
     }
 }

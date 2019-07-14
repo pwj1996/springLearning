@@ -19,7 +19,7 @@ import java.util.Random;
 
 import com.pwj.exception.StorageException;
 import com.pwj.service.impl.FileSystemStorageService;
-import com.pwj.config.StorageProperties;
+import com.pwj.component.StorageProperties;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,11 +34,14 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class FileSystemStorageServiceTests {
 
+    //Storage属性设置
     private StorageProperties properties = new StorageProperties();
     private FileSystemStorageService service;
 
     @Before
     public void init() {
+        //aop,此处为空，因为并没有使用Spring管理的StorageProperties
+        System.out.println(properties.getName());
         properties.setLocation("target/files/" + Math.abs(new Random().nextLong()));
         service = new FileSystemStorageService(properties);
         service.init();
@@ -46,7 +49,7 @@ public class FileSystemStorageServiceTests {
 
     @Test
     public void loadNonExistent() {
-        assertThat(service.load("foo.txt")).doesNotExist();
+        assertThat(service.load("testupload.txt")).doesNotExist();
     }
 
     @Test

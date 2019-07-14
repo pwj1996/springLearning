@@ -13,6 +13,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ *
+ * @author pwj
+ *
+ * Spring guides, using JDBC example,
+ */
+
 @Component
 public class JDBCTestRunner implements CommandLineRunner {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
