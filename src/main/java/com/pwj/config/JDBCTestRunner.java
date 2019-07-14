@@ -1,29 +1,21 @@
-package com.pwj;
+package com.pwj.config;
 
+import com.pwj.Application;
 import com.pwj.domain.Customer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@SpringBootApplication
-@EnableScheduling
-public class JDBCApplication implements CommandLineRunner {
-
-    private static final Logger log = LoggerFactory.getLogger(JDBCApplication.class);
-
-    public static void main(String[] args) {
-        SpringApplication.run(JDBCApplication.class, args);
-    }
+@Component
+public class JDBCTestRunner implements CommandLineRunner {
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
     JdbcTemplate jdbcTemplate;
