@@ -65,6 +65,8 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public Stream<Path> loadAll() {
         try {
+            //walk遍历文件夹，深度为1
+            //this.rootLocation::relativize 等价于 this.rootLocation.relativize(argx)
             return Files.walk(this.rootLocation, 1)
                 .filter(path -> !path.equals(this.rootLocation))
                 .map(this.rootLocation::relativize);
