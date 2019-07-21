@@ -1,6 +1,6 @@
 package com.pwj.config;
 
-import com.pwj.domain.Receiver;
+import com.pwj.domain.RedisReceiver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -24,13 +24,13 @@ public class RedisConfig {
     }
 
     @Bean
-    MessageListenerAdapter listenerAdapter(Receiver receiver) {
+    MessageListenerAdapter listenerAdapter(RedisReceiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
 
     @Bean
-    Receiver receiver(CountDownLatch latch) {
-        return new Receiver(latch);
+    RedisReceiver redisReceiver(CountDownLatch latch) {
+        return new RedisReceiver(latch);
     }
 
     @Bean
